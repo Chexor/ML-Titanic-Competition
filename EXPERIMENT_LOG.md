@@ -139,6 +139,32 @@
 
 ---
 
+### Exp 12: EvacPriority + Sample Age Imputation
+| Parameter | Waarde |
+|---|---|
+| **Features** | 4 (Age, FareLog, GroupSize, EvacPriority) |
+| **Age Imputation** | Sample uit echte distributie per Title |
+| **EvacPriority** | 1-3=Vrouwen, 4-6=Masters, 7-9=Mannen (per Pclass) |
+| **CV F1 (RF)** | 0.799 |
+| **CV F1 (GB)** | 0.797 |
+| **Kaggle (RF)** | **0.76555** |
+| **Δ Kaggle vs beste** | -0.005 |
+| **Feature Importance** | EvacPriority: 0.43 (RF), 0.42 (GB) ← DOMINANT |
+| **Beslissing** | ❌ Kaggle slechter, maar EvacPriority is sterkste feature |
+
+---
+
+## Samenvatting Kaggle Scores (geupdate)
+
+| Exp | Beschrijving | CV F1 | Kaggle | Gap |
+|---|---|---|---|---|
+| **Exp 10** | **6 feat, no GroupSurvived** | **0.801** | **0.77033** | **0.031** |
+| Final notebook v5 | 8 feat, GB | 0.792 | 0.76555 | 0.027 |
+| Exp 12 | 4 feat + EvacPriority + Sample Age | 0.799 | 0.76555 | 0.034 |
+| Exp 6 | 8 feat, tuned GB | 0.790 | 0.76794 | 0.022 |
+| Exp 9 | 7 feat + GroupSurvived OOF | 0.800 | 0.76076 | 0.039 |
+| Exp 5 | 6 feat, ensemble | 0.792 | 0.75837 | 0.034 |
+
 ## Samenvatting Kaggle Scores (geupdate)
 
 | Exp | Beschrijving | CV F1 | Kaggle | Gap |
