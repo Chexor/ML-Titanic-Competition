@@ -182,6 +182,16 @@
 
 ---
 
+
+### Exp 10b: 6 Features met gefixte GB Params
+| Parameter | Waarde |
+|---|---|
+| **Features** | 6 (Pclass, Title, Age, Sex, FareLog, GroupSize) |
+| **Dropped** | GroupSurvived |
+| **GB Config** | Exacte parameters van Exp 10 correct toegepast in notebook (n_est=500, lr=0.05, depth=3, subsample=0.7) |
+| **Kaggle (GB)** | **0.77511** |
+| **Beslissing** | ✅ Absoluut nieuw record! |
+
 ## Samenvatting Kaggle Scores (geupdate)
 
 | Exp | Beschrijving | CV F1 | Kaggle | Gap |
@@ -195,11 +205,22 @@
 | Exp 13 | 6 feat + EvacPriority + FamilyRatio | 0.790 | 0.75598 | 0.034 |
 | Exp 14 | 6 feat + EvacPriority + PartOfGroup | 0.795 | 0.74641 | 0.049 |
 
+
+### Exp 10b: 6 Features met gefixte GB Params
+| Parameter | Waarde |
+|---|---|
+| **Features** | 6 (Pclass, Title, Age, Sex, FareLog, GroupSize) |
+| **Dropped** | GroupSurvived |
+| **GB Config** | Exacte parameters van Exp 10 correct toegepast in notebook (n_est=500, lr=0.05, depth=3, subsample=0.7) |
+| **Kaggle (GB)** | **0.77511** |
+| **Beslissing** | ✅ Absoluut nieuw record! |
+
 ## Samenvatting Kaggle Scores (geupdate)
 
 | Exp | Beschrijving | CV F1 | Kaggle | Gap |
 |---|---|---|---|---|
-| **Exp 10** | **6 feat, no GroupSurvived** | **0.801** | **0.77033** | **0.031** |
+| **Exp 10 (Fixed GB)** | **9 feat, no GroupSurvived** | **0.802** | **0.77511** | **0.027** |
+| Exp 10 | 6 feat, no GroupSurvived | 0.801 | 0.77033 | 0.031 |
 | Exp 6 | 8 feat, tuned GB | 0.790 | 0.76794 | 0.022 |
 | Final notebook v5 | 8 feat, GB | 0.792 | 0.76555 | 0.027 |
 | Exp 12 | 4 feat + EvacPriority + Sample Age | 0.799 | 0.76555 | 0.034 |
@@ -221,6 +242,16 @@
 
 ---
 
+
+### Exp 10b: 6 Features met gefixte GB Params
+| Parameter | Waarde |
+|---|---|
+| **Features** | 6 (Pclass, Title, Age, Sex, FareLog, GroupSize) |
+| **Dropped** | GroupSurvived |
+| **GB Config** | Exacte parameters van Exp 10 correct toegepast in notebook (n_est=500, lr=0.05, depth=3, subsample=0.7) |
+| **Kaggle (GB)** | **0.77511** |
+| **Beslissing** | ✅ Absoluut nieuw record! |
+
 ## Samenvatting Kaggle Scores (geupdate)
 
 | Exp | Beschrijving | CV F1 | Kaggle | Gap |
@@ -234,11 +265,22 @@
 | Exp 13 | 6 feat + EvacPriority + FamilyRatio | 0.790 | 0.75598 | 0.034 |
 | Exp 14 | 6 feat + EvacPriority + PartOfGroup | 0.795 | 0.74641 | 0.049 |
 
+
+### Exp 10b: 6 Features met gefixte GB Params
+| Parameter | Waarde |
+|---|---|
+| **Features** | 6 (Pclass, Title, Age, Sex, FareLog, GroupSize) |
+| **Dropped** | GroupSurvived |
+| **GB Config** | Exacte parameters van Exp 10 correct toegepast in notebook (n_est=500, lr=0.05, depth=3, subsample=0.7) |
+| **Kaggle (GB)** | **0.77511** |
+| **Beslissing** | ✅ Absoluut nieuw record! |
+
 ## Samenvatting Kaggle Scores (geupdate)
 
 | Exp | Beschrijving | CV F1 | Kaggle | Gap |
 |---|---|---|---|---|
-| **Exp 10** | **6 feat, no GroupSurvived** | **0.801** | **0.77033** | **0.031** |
+| **Exp 10 (Fixed GB)** | **9 feat, no GroupSurvived** | **0.802** | **0.77511** | **0.027** |
+| Exp 10 | 6 feat, no GroupSurvived | 0.801 | 0.77033 | 0.031 |
 | Final notebook v5 | 8 feat, GB | 0.792 | 0.76555 | 0.027 |
 | Exp 12 | 4 feat + EvacPriority + Sample Age | 0.799 | 0.76555 | 0.034 |
 | Exp 6 | 8 feat, tuned GB | 0.790 | 0.76794 | 0.022 |
@@ -273,6 +315,16 @@
 
 ---
 
+
+### Exp 10b: 6 Features met gefixte GB Params
+| Parameter | Waarde |
+|---|---|
+| **Features** | 6 (Pclass, Title, Age, Sex, FareLog, GroupSize) |
+| **Dropped** | GroupSurvived |
+| **GB Config** | Exacte parameters van Exp 10 correct toegepast in notebook (n_est=500, lr=0.05, depth=3, subsample=0.7) |
+| **Kaggle (GB)** | **0.77511** |
+| **Beslissing** | ✅ Absoluut nieuw record! |
+
 ## Samenvatting Kaggle Scores (geupdate)
 
 | Exp | Beschrijving | CV F1 | Kaggle | Gap |
@@ -286,11 +338,22 @@
 | Exp 13 | 6 feat + EvacPriority + FamilyRatio | 0.790 | 0.75598 | 0.034 |
 | Exp 14 | 6 feat + EvacPriority + PartOfGroup | 0.795 | 0.74641 | 0.049 |
 
+
+### Exp 10b: 6 Features met gefixte GB Params
+| Parameter | Waarde |
+|---|---|
+| **Features** | 6 (Pclass, Title, Age, Sex, FareLog, GroupSize) |
+| **Dropped** | GroupSurvived |
+| **GB Config** | Exacte parameters van Exp 10 correct toegepast in notebook (n_est=500, lr=0.05, depth=3, subsample=0.7) |
+| **Kaggle (GB)** | **0.77511** |
+| **Beslissing** | ✅ Absoluut nieuw record! |
+
 ## Samenvatting Kaggle Scores (geupdate)
 
 | Exp | Beschrijving | CV F1 | Kaggle | Gap |
 |---|---|---|---|---|
-| **Exp 10** | **6 feat, no GroupSurvived** | **0.801** | **0.77033** | **0.031** |
+| **Exp 10 (Fixed GB)** | **9 feat, no GroupSurvived** | **0.802** | **0.77511** | **0.027** |
+| Exp 10 | 6 feat, no GroupSurvived | 0.801 | 0.77033 | 0.031 |
 | Exp 6 | 8 feat, tuned GB | 0.790 | 0.76794 | 0.022 |
 | Final notebook v5 | 8 feat, GB | 0.792 | 0.76555 | 0.027 |
 | Exp 12 | 4 feat + EvacPriority + Sample Age | 0.799 | 0.76555 | 0.034 |
@@ -312,6 +375,16 @@
 
 ---
 
+
+### Exp 10b: 6 Features met gefixte GB Params
+| Parameter | Waarde |
+|---|---|
+| **Features** | 6 (Pclass, Title, Age, Sex, FareLog, GroupSize) |
+| **Dropped** | GroupSurvived |
+| **GB Config** | Exacte parameters van Exp 10 correct toegepast in notebook (n_est=500, lr=0.05, depth=3, subsample=0.7) |
+| **Kaggle (GB)** | **0.77511** |
+| **Beslissing** | ✅ Absoluut nieuw record! |
+
 ## Samenvatting Kaggle Scores (geupdate)
 
 | Exp | Beschrijving | CV F1 | Kaggle | Gap |
@@ -325,13 +398,24 @@
 | Exp 13 | 6 feat + EvacPriority + FamilyRatio | 0.790 | 0.75598 | 0.034 |
 | Exp 14 | 6 feat + EvacPriority + PartOfGroup | 0.795 | 0.74641 | 0.049 |
 
+
+### Exp 10b: 6 Features met gefixte GB Params
+| Parameter | Waarde |
+|---|---|
+| **Features** | 6 (Pclass, Title, Age, Sex, FareLog, GroupSize) |
+| **Dropped** | GroupSurvived |
+| **GB Config** | Exacte parameters van Exp 10 correct toegepast in notebook (n_est=500, lr=0.05, depth=3, subsample=0.7) |
+| **Kaggle (GB)** | **0.77511** |
+| **Beslissing** | ✅ Absoluut nieuw record! |
+
 ## Samenvatting Kaggle Scores (geupdate)
 
 | Exp | Beschrijving | CV F1 | Kaggle | Gap |
 |---|---|---|---|---|
 | Final notebook v5 | 8 feat, GB | 0.792 | 0.76555 | 0.027 |
 | Exp 6 | 8 feat, tuned GB | 0.790 | 0.76794 | 0.022 |
-| **Exp 10** | **6 feat, no GroupSurvived** | **0.801** | **0.77033** | **0.031** |
+| **Exp 10 (Fixed GB)** | **9 feat, no GroupSurvived** | **0.802** | **0.77511** | **0.027** |
+| Exp 10 | 6 feat, no GroupSurvived | 0.801 | 0.77033 | 0.031 |
 | Exp 9 | 7 feat + GroupSurvived OOF | 0.800 | 0.76076 | 0.039 |
 | Exp 5 | 6 feat, ensemble | 0.792 | 0.75837 | 0.034 |
 
