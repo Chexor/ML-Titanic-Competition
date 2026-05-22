@@ -111,7 +111,7 @@ Before training machine learning models, I define a simple domain baseline: wome
 The baseline predicts survival for:
 
 - female passengers
-- passengers younger than 16
+- passengers younger than 14
 
 Everyone else is predicted as not surviving.
 
@@ -124,7 +124,7 @@ The baseline results are:
 
 This means any final model should improve on this benchmark to be useful.
 
-One important implementation detail is that the baseline is calculated before scaling `Age`. This keeps the rule `Age < 16` meaningful and avoids comparing against an incorrectly calculated baseline.
+One important implementation detail is that the baseline is calculated before scaling `Age`. This keeps the rule `Age < 14` meaningful and avoids comparing against an incorrectly calculated baseline.
 
 ---
 

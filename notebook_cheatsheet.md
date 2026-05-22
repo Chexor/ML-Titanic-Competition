@@ -228,14 +228,14 @@ Logistic Regression can be sensitive to feature scale. Tree-based models are les
 
 Important baseline detail:
 
-The `Women and Children First` baseline must use the original age scale. If `Age` is scaled, the rule `Age < 16` no longer means younger than 16 years.
+The `Women and Children First` baseline must use the original age scale. If `Age` is scaled, the rule `Age < 14` no longer means younger than 14 years.
 
 ## 8. Baseline Model
 
 The baseline is a simple rule:
 
 ```text
-Predict survived if passenger is female or younger than 16.
+Predict survived if passenger is female or younger than 14.
 ```
 
 This is called `Women and Children First`.

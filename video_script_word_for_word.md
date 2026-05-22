@@ -87,7 +87,7 @@ Before training machine learning models, a simple baseline is created.
 
 The baseline is based on the historical rule: women and children first.
 
-The rule predicts survival for female passengers and for passengers younger than 16. Everyone else is predicted as not surviving.
+The rule predicts survival for female passengers and for passengers younger than 14. Everyone else is predicted as not surviving.
 
 This is a useful baseline because it is simple, understandable, and based on domain knowledge.
 
@@ -95,7 +95,7 @@ The baseline accuracy is `0.789`, and the baseline F1 score is `0.731`.
 
 This means that any machine learning model should beat this baseline to justify the added complexity.
 
-One important detail is that the baseline must use the original age values. If age has already been scaled, then the rule `Age < 16` no longer means younger than 16 years old. The notebook therefore calculates the baseline before scaling age.
+One important detail is that the baseline must use the original age values. If age has already been scaled, then the rule `Age < 14` no longer means younger than 14 years old. The notebook therefore calculates the baseline before scaling age.
 
 ## 5. Model Training And Cross-Validation
 

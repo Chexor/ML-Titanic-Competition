@@ -23,7 +23,7 @@
 - The final assignment notebook intentionally uses shallow learning only: Logistic Regression, Random Forest, Gradient Boosting, and a soft Voting Ensemble.
 - The selected final model is Gradient Boosting; Voting Ensemble is included as an evaluated model but should not be forced as final unless CV F1 wins.
 - Current verified final comparison: baseline F1 `0.731`, Gradient Boosting F1 `0.792`, Voting Ensemble F1 `0.778`.
-- The `Women and Children First` baseline must use original unscaled age values; do not recompute `Age < 16` after scaling.
+- The `Women and Children First` baseline must use original unscaled age values; do not recompute `Age < 14` after scaling.
 - Feature engineering is intentionally compact: `Title`, `FamilySize`, `HasCabin`, `FareLog`, binary `Sex`, binary `Embarked_C`, ordinal `Pclass`.
 
 ## Deliverable Files

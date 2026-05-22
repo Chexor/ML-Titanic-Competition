@@ -245,7 +245,7 @@ Define a simple, domain-driven baseline before training machine learning models.
 ### Content To Include
 
 - Explain the historical "Women and Children First" rule.
-- Implement the baseline rule: predict survived if `Sex == 'female'` or `Age < 16`.
+- Implement the baseline rule: predict survived if `Sex == 'female'` or `Age < 14`.
 - Show accuracy, precision, recall, F1.
 - Show confusion matrix.
 
@@ -479,7 +479,7 @@ Disclose all sources and AI tools used in the project.
 
 ### Why Baseline is After Feature Engineering
 
-The baseline rule `Age < 16` and `Sex == 'female'` requires:
+The baseline rule `Age < 14` and `Sex == 'female'` requires:
 - `Age` to be imputed (done in Feature Engineering step 4.5)
 - `Sex` to be encoded (done in Feature Engineering step 4.7)
 
