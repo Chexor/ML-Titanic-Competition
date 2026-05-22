@@ -1,80 +1,87 @@
-Good day. My name is Tim Kindt, and welcome to this presentation on the Titanic Survival Prediction project.
+# Presentation Outline: Titanic Survival Prediction
 
-The sinking of the RMS Titanic in 1912 is one of history's most significant maritime disasters. In this project, data science is used to analyze passenger records and build a machine learning model that predicts survival.
+**Target length:** 10 to 15 minutes  
+**Notebook:** `Titanic_Disaster_Challenge-Final.ipynb`
 
-The notebook follows a complete, end-to-end workflow:
-Data Loading and Exploratory Data Analysis.
-Feature Engineering and Preprocessing.
-Baseline Modeling.
-Model Training and Validation.
-And Final Evaluation and Kaggle Submission.
+## 1. Introduction (2 mins)
+- **Greeting:** "Good day. My name is Tim Kindt. Welcome to my presentation on the Titanic Survival Prediction project."
+- **Context:** The sinking of the RMS Titanic in 1912 is one of history's most famous tragedies. This project applies data science to predict passenger survival based on historical records.
+- **Problem Type:** Supervised binary classification.
+  - *Supervised:* Training data contains the known answers (`Survived` column).
+  - *Binary:* Target has only two states (0 = Did not survive, 1 = Survived).
+- **Workflow Overview:** 
+  - Data Loading & Exploratory Data Analysis (EDA).
+  - Feature Engineering & Preprocessing.
+  - Baseline Modeling.
+  - Model Training, Tuning, and Validation.
+  - Final Evaluation & Kaggle Submission.
+- **Scope:** The approach prioritizes methodological correctness, interpretability, and robust validation over extreme complexity. Only shallow learning models (Logistic Regression, Random Forest, Gradient Boosting) are used. No deep learning.
 
-The approach focuses on methodological soundness. Interpretable features, rigorous cross-validation, and a strong baseline are used to ensure the results are reliable. All models used here are shallow learning models implemented with Scikit-Learn.
+## 2. Exploratory Data Analysis (EDA) (2.5 mins)
+- **Data Loading:** Train dataset (891 passengers, includes target) and Test dataset (418 passengers, target missing).
+- **Key EDA Findings:**
+  - **Sex:** The strongest predictor. Females had a significantly higher survival rate.
+  - **Pclass (Passenger Class):** Highly influential. First-class passengers survived more often, reflecting socio-economic status and cabin placement.
+  - **Age:** Contains many missing values. Requires careful, grouped imputation rather than a global median.
+  - **Fare:** Heavily right-skewed. A few paid massive amounts. Needs transformation (log scale) to stabilize models.
+  - **Cabin:** Mostly missing. The raw text is dropped.
+- **Train vs. Test Check:** Distributions match perfectly, giving confidence that our preprocessing strategy will generalize to unseen data.
 
-The process begins by loading the training dataset, which contains 891 passengers, and the test dataset with 418 passengers.
+## 3. Feature Engineering & Preprocessing (3.5 mins)
+- **Objective:** Transform raw data into a compact, highly informative set of 6 features. Train and test are combined temporarily (excluding the target) to ensure consistent preprocessing.
+- **Feature 1: Title:** Extracted from names (Mr, Mrs, Miss, Master). Rare titles (Dr, Rev) grouped into `Rare`. Powerfully captures gender, age, and social role.
+- **Feature 2: GroupSize:** Derived from shared ticket numbers. Captures travel companions, friends, and nannies who evacuated together—a stronger signal than family size alone.
+- **Feature 3: Age:** Imputed by sampling from the age distribution of the passenger's specific `Title` group. Preserves natural variance. Seed fixed for reproducibility.
+- **Feature 4: FareLog:** Missing fares filled with median per Pclass. A log transformation compresses extreme outliers into a normal distribution.
+- **Categorical Encoding:** 
+  - `Sex` is mapped to binary (0/1). 
+  - `Title` uses **Ordinal Encoding**. *Theory note:* We avoided One-Hot Encoding to prevent the "curse of dimensionality" and sparsity. Tree-based models handle ordinal values natively by learning optimal numerical splits.
+- **Feature Scaling & Data Leakage:**
+  - `Age`, `FareLog`, and `GroupSize` are standardized.
+  - *Theory note:* The `StandardScaler` is fit **strictly on the training data**. Transforming the test data using the train scaler prevents **Data Leakage**, ensuring the model does not indirectly "peek" at test distributions.
+- **Final Set:** Exactly 6 clean features: `Pclass`, `Title`, `Age`, `Sex`, `FareLog`, and `GroupSize`.
 
-During the Exploratory Data Analysis, distributions, missing values, and correlations are examined. Several key patterns emerge:
+## 4. Domain-Driven Baseline (1.5 mins)
+- **The Rule:** "Women and Children First." Predicts survival for all females and children under 14.
+- **Metrics:** Achieves an Accuracy of ~79% and an F1 score of **0.735**.
+- **Purpose:** A rigid, historically accurate benchmark. Any ML model must clearly beat an F1 of 0.735 to justify its added complexity. 
+- **Note:** The baseline explicitly uses the original, unscaled Age values.
 
-Sex is the strongest predictor: female passengers had a significantly higher survival rate.
-Passenger Class matters: first-class passengers survived more often than third-class passengers.
-Age has missing values, requiring careful imputation.
-Fare is heavily right-skewed, meaning a few passengers paid very high prices.
-Cabin is missing for most passengers, so the raw text is dropped but derived features can be considered if needed.
+## 5. Model Training and Cross-Validation (2.5 mins)
+- **Metric Selection (Accuracy vs F1):**
+  - *Theory note:* Roughly 62% of passengers died. Due to this class imbalance, **Accuracy** is misleading (guessing "everyone dies" yields 62% accuracy). 
+  - We use the **F1-score**, which balances Precision (minimizing false alarms) and Recall (finding all actual survivors).
+- **Validation Setup:** Stratified 5-Fold Cross-Validation.
+  - `n_splits=5`: Good balance of training data (80%) vs validation data (20%).
+  - `shuffle=True`: Randomizes hidden ordering (like ticket sequences).
+  - `random_state=42`: Ensures perfectly reproducible splits.
+  - *Stratified:* Ensures the 38% survival rate is maintained across every fold.
+- **The Models:**
+  1. **Logistic Regression:** Simple, interpretable linear baseline.
+  2. **Random Forest:** Non-linear ensemble of independent decision trees.
+  3. **Gradient Boosting:** Advanced ensemble. Builds trees sequentially to correct the residual errors of previous trees.
+  - *Note:* Gradient Boosting utilizes early stopping (500 trees, 20% validation fraction) to prevent overfitting.
+- **Voting Ensemble:** A Soft Voting classifier averages the predicted probabilities of the three tuned models.
 
-The test set is also checked to ensure its distributions match the training set, confirming that the preprocessing strategy will transfer well.
+## 6. Model Results & Feature Importance (2 mins)
+- **Cross-Validated F1 Scores:**
+  - Baseline: 0.735
+  - Logistic Regression: 0.752
+  - Random Forest: 0.791
+  - **Gradient Boosting: 0.802** (The Winner)
+  - Voting Ensemble: 0.800
+- **Selection:** Gradient Boosting improves over the baseline by 0.067 F1 points. It is selected as the final model.
+- **Final Fit & Error Analysis:** 
+  - Retrained on the full training set using the fixed CV hyperparameters.
+  - Out-of-fold confusion matrix shows the model is slightly conservative (highly precise, but produces slightly more false negatives).
+- **Feature Importance:**
+  - `Title` dominates (~47%), proving our extraction strategy worked perfectly.
+  - `Pclass` and `FareLog` follow, confirming socio-economic status was a key survival factor.
+  - Raw `Sex` has low importance *only because* the gender signal is already perfectly encoded within `Title`.
 
-Next, a compact set of six features is engineered to feed into the models. Train and test data are combined to ensure consistent preprocessing.
-
-Title: Titles like Mr, Mrs, Miss, and Master are extracted from names. Rare titles are grouped into a Rare category. This captures social role and gender information effectively.
-GroupSize: Instead of just counting family members, the number of passengers sharing the same ticket is counted. This captures travel groups, which likely evacuated together.
-Age: Missing ages are imputed by sampling from the age distribution of each Title group. This preserves natural variance better than a global median. A fixed random seed ensures reproducibility.
-FareLog: Missing fares are filled with the median per class, and a log transformation is applied to handle the skewness.
-Pclass and Sex are encoded numerically.
-
-After scaling the continuous features, the process yields six clean features: Pclass, Sex, Age, Title, GroupSize, and FareLog.
-
-A note on multicollinearity: Title and Sex are highly correlated, which is expected since titles encode gender. However, tree-based models handle this well, and Title adds nuance beyond just gender.
-
-Before training complex models, a domain-driven baseline is established: the Women and Children First rule.
-
-This rule predicts survival for all females and children under 14. It achieves an F1 score of 0.735 and an accuracy of roughly 79 percent.
-
-This is a strong benchmark. Any machine learning model must clearly outperform this to justify its complexity. The baseline explicitly uses the original, unscaled Age values so the rule remains meaningful.
-
-Three models are trained using 5-fold stratified cross-validation:
-Logistic Regression.
-Random Forest.
-And Gradient Boosting.
-
-A Soft Voting Ensemble combining all three is also evaluated. Hyperparameters are tuned using GridSearchCV.
-
-Here are the cross-validated results:
-Logistic Regression scores an F1 of 0.752.
-Random Forest improves to 0.791.
-Gradient Boosting achieves the highest score with an F1 of 0.802.
-The Voting Ensemble scores 0.800, which is good but does not beat Gradient Boosting.
-
-Gradient Boosting improves over the baseline by nearly 0.07 points in F1 score. Therefore, Gradient Boosting is selected as the final model.
-
-The Gradient Boosting model is retrained on the full training set. No further tuning is done to avoid overfitting; the hyperparameters from cross-validation are fixed.
-
-For error analysis, out-of-fold predictions are used. The confusion matrix shows the model is slightly conservative, with slightly more false negatives than false positives.
-
-The feature importance plot confirms the EDA findings:
-Title is the most important feature.
-Pclass and FareLog follow closely.
-GroupSize and Age also contribute meaningful signal.
-
-This confirms the model relies on meaningful, interpretable signals.
-
-Finally, predictions are generated for the 418 passengers in the test set.
-
-The submission file passes all sanity checks:
-418 rows.
-Correct columns: PassengerId and Survived.
-Unique IDs and binary labels.
-
-To summarize:
-A robust machine learning pipeline was built that outperforms a strong historical baseline. By focusing on careful feature engineering and rigorous validation, a Gradient Boosting model was selected that achieves a cross-validated F1 score of 0.802 and a strong Kaggle submission score of 0.77511.
-
-Thank you for watching. I am happy to answer any questions.
+## 7. Kaggle Submission & Conclusion (1 min)
+- **Prediction:** The Gradient Boosting model predicts the 418 test passengers.
+- **Sanity Checks:** The submission file strictly passes all format checks (418 rows, correct headers, unique IDs, binary labels).
+- **Result:** Uploaded to Kaggle, this 6-feature GB model achieved an exceptional public score of **0.77511**.
+- **Summary:** A robust pipeline was built using scrupulous feature engineering, data leakage prevention, F1-score optimization, and stratified CV. The compact Gradient Boosting model significantly outperformed the historical baseline.
+- **Closing:** "Thank you for your time. I am happy to answer any questions."
