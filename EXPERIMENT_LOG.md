@@ -154,6 +154,32 @@
 
 ---
 
+### Exp 13: EvacPriority + FamilyRatio (6 features)
+| Parameter | Waarde |
+|---|---|
+| **Features** | 6 (EvacPriority, Title, Age, FareLog, GroupSize, FamilyRatio) |
+| **CV F1 (RF)** | 0.790 |
+| **CV F1 (GB)** | 0.790 |
+| **Kaggle** | **0.75598** |
+| **FamilyRatio Importance** | 0.019-0.033 (zeer laag) |
+| **EvacPriority Importance** | 0.23-0.40 (hoog) |
+| **Δ Kaggle vs beste** | -0.014 |
+| **Beslissing** | ❌ Slechtste resultaat tot nu toe |
+
+---
+
+## Samenvatting Kaggle Scores (geupdate)
+
+| Exp | Beschrijving | CV F1 | Kaggle | Gap |
+|---|---|---|---|---|
+| **Exp 10** | **6 feat, no GroupSurvived** | **0.801** | **0.77033** | **0.031** |
+| Exp 6 | 8 feat, tuned GB | 0.790 | 0.76794 | 0.022 |
+| Final notebook v5 | 8 feat, GB | 0.792 | 0.76555 | 0.027 |
+| Exp 12 | 4 feat + EvacPriority + Sample Age | 0.799 | 0.76555 | 0.034 |
+| Exp 9 | 7 feat + GroupSurvived OOF | 0.800 | 0.76076 | 0.039 |
+| Exp 5 | 6 feat, ensemble | 0.792 | 0.75837 | 0.034 |
+| Exp 13 | 6 feat + EvacPriority + FamilyRatio | 0.790 | 0.75598 | 0.034 |
+
 ## Samenvatting Kaggle Scores (geupdate)
 
 | Exp | Beschrijving | CV F1 | Kaggle | Gap |
@@ -164,6 +190,32 @@
 | Exp 6 | 8 feat, tuned GB | 0.790 | 0.76794 | 0.022 |
 | Exp 9 | 7 feat + GroupSurvived OOF | 0.800 | 0.76076 | 0.039 |
 | Exp 5 | 6 feat, ensemble | 0.792 | 0.75837 | 0.034 |
+
+### Exp 13: EvacPriority + FamilyRatio (6 features)
+| Parameter | Waarde |
+|---|---|
+| **Features** | 6 (EvacPriority, Title, Age, FareLog, GroupSize, FamilyRatio) |
+| **CV F1 (RF)** | 0.790 |
+| **CV F1 (GB)** | 0.790 |
+| **Kaggle** | **0.75598** |
+| **FamilyRatio Importance** | 0.019-0.033 (zeer laag) |
+| **EvacPriority Importance** | 0.23-0.40 (hoog) |
+| **Δ Kaggle vs beste** | -0.014 |
+| **Beslissing** | ❌ Slechtste resultaat tot nu toe |
+
+---
+
+## Samenvatting Kaggle Scores (geupdate)
+
+| Exp | Beschrijving | CV F1 | Kaggle | Gap |
+|---|---|---|---|---|
+| **Exp 10** | **6 feat, no GroupSurvived** | **0.801** | **0.77033** | **0.031** |
+| Exp 6 | 8 feat, tuned GB | 0.790 | 0.76794 | 0.022 |
+| Final notebook v5 | 8 feat, GB | 0.792 | 0.76555 | 0.027 |
+| Exp 12 | 4 feat + EvacPriority + Sample Age | 0.799 | 0.76555 | 0.034 |
+| Exp 9 | 7 feat + GroupSurvived OOF | 0.800 | 0.76076 | 0.039 |
+| Exp 5 | 6 feat, ensemble | 0.792 | 0.75837 | 0.034 |
+| Exp 13 | 6 feat + EvacPriority + FamilyRatio | 0.790 | 0.75598 | 0.034 |
 
 ## Samenvatting Kaggle Scores (geupdate)
 
