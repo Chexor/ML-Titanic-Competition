@@ -114,6 +114,41 @@
 
 ---
 
+### Exp 10: 6 Features ZONDER GroupSurvived
+| Parameter | Waarde |
+|---|---|
+| **Features** | 6 (Pclass, Title, Age, Sex, FareLog, GroupSize) |
+| **Dropped** | GroupSurvived (veroorzaakte overfitting) |
+| **GB Config** | Early stopping: n_estimators=500, validation_fraction=0.2, n_iter_no_change=20 |
+| **CV F1 (GB)** | 0.801 |
+| **CV F1 (RF)** | 0.800 |
+| **CV F1 (Ensemble)** | 0.801 |
+| **Kaggle (GB)** | **0.77033** |
+| **Δ Kaggle vs baseline** | **+0.0024** |
+| **CV-Kaggle gap** | 0.031 (was 0.039 met GroupSurvived) |
+| **Beslissing** | ✅ Nieuwe beste Kaggle score! |
+
+### Exp 11: Feature Importance Analyse
+| Methode | Resultaat |
+|---|---|
+| **Belangrijkste feature** | Title (0.31-0.33 permutation importance) |
+| **2e belangrijkst** | Pclass (0.10-0.24) |
+| **Sex impact GB** | 0.005 (bijna nul!) |
+| **GroupSurvived impact** | 0.055 (laag, veroorzaakt overfitting) |
+| **GroupSize impact** | 0.028-0.049 (laag maar nuttig) |
+
+---
+
+## Samenvatting Kaggle Scores (geupdate)
+
+| Exp | Beschrijving | CV F1 | Kaggle | Gap |
+|---|---|---|---|---|
+| Final notebook v5 | 8 feat, GB | 0.792 | 0.76555 | 0.027 |
+| Exp 6 | 8 feat, tuned GB | 0.790 | 0.76794 | 0.022 |
+| **Exp 10** | **6 feat, no GroupSurvived** | **0.801** | **0.77033** | **0.031** |
+| Exp 9 | 7 feat + GroupSurvived OOF | 0.800 | 0.76076 | 0.039 |
+| Exp 5 | 6 feat, ensemble | 0.792 | 0.75837 | 0.034 |
+
 ## Samenvatting Kaggle Scores
 
 | Exp | Beschrijving | CV F1 | Kaggle |
