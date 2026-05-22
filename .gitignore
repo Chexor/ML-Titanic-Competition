@@ -46,3 +46,11 @@ Thumbs.db
 
 # Logs
 *.log
+
+# Generated plots (notebook outputs are sufficient)
+plots/
+*.png
+
+# Old submission experiments (keep only submission.csv)
+submission_*.csv
+!submission.csv
