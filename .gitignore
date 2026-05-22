@@ -51,6 +51,9 @@ Thumbs.db
 plots/
 *.png
 
+# Markdown documentation (scripts kept locally only)
+*.md
+
 # Old submission experiments (keep only submission.csv)
 submission_*.csv
 !submission.csv
